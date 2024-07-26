@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import {
-  StyleSheet, View
+  Keyboard,
+  StyleSheet, TouchableWithoutFeedback, View
 } from 'react-native';
 import InputTodo from './components/todo/input.todo';
 import ListTodo from './components/todo/list.todo';
@@ -23,15 +24,18 @@ export default function App() {
   }
 
   return (
-    <View style={styles.container}>
-      <InputTodo
-        addTodo={addTodo}
-      />
-      <ListTodo
-        todoList={todoList}
-        deleteTodo={deleteTodo}
-      />
-    </View>
+    <TouchableWithoutFeedback
+      onPress={() => Keyboard.dismiss()}>
+      <View style={styles.container}>
+        <InputTodo
+          addTodo={addTodo}
+        />
+        <ListTodo
+          todoList={todoList}
+          deleteTodo={deleteTodo}
+        />
+      </View>
+    </TouchableWithoutFeedback>
   );
 }
 
