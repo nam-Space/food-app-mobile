@@ -16,7 +16,6 @@ interface IProps {
 
 const ListTodo = (props: IProps) => {
     const { todoList } = props;
-
     return (
         <>
             <FlatList
