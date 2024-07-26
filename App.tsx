@@ -6,7 +6,7 @@ import InputTodo from './components/todo/input.todo';
 import ListTodo from './components/todo/list.todo';
 
 export default function App() {
-  const [todoList, setTodoList] = useState<ITodo[]>([])
+  const [todoList, setTodoList] = useState<ITodo[]>([]);
 
   function randomInteger(min: number, max: number) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -17,6 +17,11 @@ export default function App() {
     setTodoList([...todoList, todo]);
   }
 
+  const deleteTodo = (id: number) => {
+    const newTodo = todoList.filter(todo => todo.id != id);
+    setTodoList(newTodo)
+  }
+
   return (
     <View style={styles.container}>
       <InputTodo
@@ -24,6 +29,7 @@ export default function App() {
       />
       <ListTodo
         todoList={todoList}
+        deleteTodo={deleteTodo}
       />
     </View>
   );
