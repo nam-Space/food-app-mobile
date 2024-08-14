@@ -3,7 +3,7 @@ import {
   Text, View
 } from 'react-native';
 
-import { NavigationContainer } from '@react-navigation/native';
+import { NavigationContainer, useRoute } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 
@@ -23,13 +23,17 @@ export default function App() {
         </View>
         <View style={{ marginVertical: 10 }}>
           <Button
-            onPress={() => navigation.navigate("hoidanit")}
+            onPress={() => navigation.navigate("hoidanit",
+              { userId: 1, name: "Eric" }
+            )}
             title='Go user id = 1' />
         </View>
 
         <View style={{ marginVertical: 10 }}>
           <Button
-            onPress={() => navigation.navigate("hoidanit")}
+            onPress={() => navigation.navigate("hoidanit", {
+              userId: 2, name: "Hỏi Dân IT"
+            })}
             title='Go user id = 2' />
         </View>
 
@@ -38,12 +42,13 @@ export default function App() {
   }
 
   function DetailsScreen() {
+    const route: any = useRoute();
     const navigation: any = useNavigation();
 
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
         <Text>Details Screen</Text>
-        <Text>user id = ??? </Text>
+        <Text>user id = {route.params.userId} </Text>
         <Button
           onPress={() => navigation.goBack()}
           title='Go back Home' />
