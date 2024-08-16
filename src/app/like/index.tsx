@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Button, Text, View } from "react-native"
 
+
 const Like = () => {
     const navigation: any = useNavigation();
 
