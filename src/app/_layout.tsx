@@ -1,3 +1,4 @@
+import AppProvider from "@/context/app.context";
 import { DefaultTheme, ThemeProvider } from "@react-navigation/native";
 import { Stack } from "expo-router";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
@@ -16,7 +17,8 @@ const RootLayout = () => {
     return (
         <GestureHandlerRootView>
             <RootSiblingParent>
-                <SafeAreaView style={{ flex: 1 }}>
+                <AppProvider>
+                    {/* <SafeAreaView style={{ flex: 1 }}> */}
                     <ThemeProvider value={navTheme}>
                         <Stack
                             screenOptions={{
@@ -47,17 +49,23 @@ const RootLayout = () => {
                                 options={{ headerShown: false }}
                             />
                             <Stack.Screen
+                                name="(auth)/welcome"
+                                options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
                                 name="(tabs)"
                                 options={{ headerShown: false }}
                             />
 
                             <Stack.Screen
-                                name="product/index"
-                                options={{ headerTitle: "Sản phẩm" }}
+                                name="product/[id]"
+                                options={{ headerShown: false }}
+                            // options={{ headerTitle: "Sản phẩm" }}
                             />
                         </Stack>
                     </ThemeProvider>
-                </SafeAreaView>
+                    {/* </SafeAreaView> */}
+                </AppProvider>
             </RootSiblingParent>
         </GestureHandlerRootView>
     )

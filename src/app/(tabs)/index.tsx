@@ -3,12 +3,30 @@ import CollectionHome from "@/components/home/collection.home";
 import HeaderHome from "@/components/home/header.home";
 import SearchHome from "@/components/home/search.home";
 import TopListHome from "@/components/home/top.list.home";
-import { StyleSheet, View } from "react-native"
+import { useCurrentApp } from "@/context/app.context";
+import React from "react";
+import { Button, StyleSheet, View } from "react-native"
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const data = [
-    { key: 1, name: "Top Quán Rating 5* tuần này", ref: "" },
-    { key: 2, name: "Quán Mới Lên Sàn", ref: "" },
-    { key: 3, name: "Ăn Thỏa Thích, Freeship 0Đ", ref: "" },
+    {
+        key: 1,
+        name: "Top Quán Rating 5* tuần này",
+        description: "Gợi ý quán được tín đồ ẩm thực đánh giá 5*",
+        refAPI: "top-rating"
+    },
+    {
+        key: 2,
+        name: "Quán Mới Lên Sàn",
+        description: "Khám phá ngay hàng loạt quán mới cực ngon",
+        refAPI: "newcomer"
+    },
+    {
+        key: 3,
+        name: "Ăn Thỏa Thích, Freeship 0Đ",
+        description: "Bánh ngọt, chân gà, bánh tráng trộn... Freeship.",
+        refAPI: "top-freeship"
+    }
 ]
 
 const styles = StyleSheet.create({
@@ -46,16 +64,24 @@ const styles = StyleSheet.create({
 });
 
 const HomeTab = () => {
-    return (
-        <CustomFlatList
-            data={data}
-            style={styles.list}
-            renderItem={({ item }) => <CollectionHome name={item.name} />}
 
-            HeaderComponent={<HeaderHome />}
-            StickyElementComponent={<SearchHome />}
-            TopListElementComponent={<TopListHome />}
-        />
+    return (
+        <SafeAreaView style={{ flex: 1 }}>
+            <CustomFlatList
+                data={data}
+                style={styles.list}
+                renderItem={({ item }) => (
+                    <CollectionHome
+                        name={item.name}
+                        description={item.description}
+                        refAPI={item.refAPI}
+                    />
+                )}
+                HeaderComponent={<HeaderHome />}
+                StickyElementComponent={<SearchHome />}
+                TopListElementComponent={<TopListHome />}
+            />
+        </SafeAreaView>
     )
 }
 export default HomeTab;
