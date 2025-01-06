@@ -1,4 +1,5 @@
 import RMain from "@/components/example/restaurant/main";
+import { useCurrentApp } from "@/context/app.context";
 import { getRestaurantByIdAPI } from "@/utils/api";
 import { useLocalSearchParams } from "expo-router";
 import { useEffect, useState } from "react";
@@ -9,8 +10,8 @@ const { height: sHeight, width: sWidth } = Dimensions.get('window');
 
 const ProductPage = () => {
     const { id } = useLocalSearchParams();
-    const [restaurant, setRestaurant] = useState<IRestaurant | null>(null)
     const [loading, setLoading] = useState(true);
+    const { setRestaurant } = useCurrentApp();
 
     useEffect(() => {
         const fetchRestaurant = async () => {
@@ -26,9 +27,7 @@ const ProductPage = () => {
     return (
         <View style={{ flex: 1 }}>
             {loading === false ?
-                <RMain
-                    restaurant={restaurant}
-                />
+                <RMain />
                 :
                 <ContentLoader
                     speed={2}
