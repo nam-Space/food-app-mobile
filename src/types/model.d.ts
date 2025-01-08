@@ -6,6 +6,17 @@ declare global {
         statusCode: number | string;
         data?: T;
     }
+
+    interface IModelPaginate<T> {
+        meta: {
+            current: number;
+            pageSize: number;
+            pages: number;
+            total: number;
+        };
+        results: T[];
+    }
+
     interface IRegister {
         _id: string;
     }
@@ -49,6 +60,7 @@ declare global {
         updatedAt: Date;
 
         menu: IMenu[];
+        isLike: boolean;
     }
 
     interface IMenu {

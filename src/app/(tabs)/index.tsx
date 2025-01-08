@@ -4,7 +4,8 @@ import HeaderHome from "@/components/home/header.home";
 import SearchHome from "@/components/home/search.home";
 import TopListHome from "@/components/home/top.list.home";
 import { useCurrentApp } from "@/context/app.context";
-import React from "react";
+import { router } from "expo-router";
+import React, { useEffect, useState } from "react";
 import { Button, StyleSheet, View } from "react-native"
 import { SafeAreaView } from "react-native-safe-area-context";
 
@@ -64,6 +65,16 @@ const styles = StyleSheet.create({
 });
 
 const HomeTab = () => {
+    const [mounted, setMounted] = useState(false);
+    useEffect(() => {
+        setMounted(true);
+    }, []);
+    useEffect(() => {
+        if (!mounted) return;
+        setTimeout(() => {
+            router.push("/(auth)/popup.sale")
+        }, 1000)
+    }, [mounted])
 
     return (
         <SafeAreaView style={{ flex: 1 }}>

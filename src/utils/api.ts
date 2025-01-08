@@ -106,3 +106,51 @@ export const getOrderHistoryAPI = () => {
     const url = `/api/v1/orders`;
     return axios.get<IBackendRes<IOrderHistory[]>>(url);
 };
+
+export const updateUserAPI = (_id: string, name: string, phone: string) => {
+    const url = `/api/v1/users`;
+    return axios.patch<IBackendRes<IUserLogin>>(url, { _id, name, phone });
+};
+
+export const updateUserPasswordAPI = (
+    currentPassword: string,
+    newPassword: string
+) => {
+    const url = `/api/v1/users/password`;
+    return axios.post<IBackendRes<IUserLogin>>(url, {
+        currentPassword,
+        newPassword,
+    });
+};
+
+export const requestPasswordAPI = (email: string) => {
+    const url = `/api/v1/auth/retry-password`;
+    return axios.post<IBackendRes<IUserLogin>>(url, { email });
+};
+export const forgotPasswordAPI = (
+    code: string,
+    email: string,
+    password: string
+) => {
+    const url = `/api/v1/auth/forgot-password`;
+    return axios.post<IBackendRes<IUserLogin>>(url, { code, email, password });
+};
+
+export const likeRestaurantAPI = (restaurant: string, quantity: number) => {
+    const url = `/api/v1/likes`;
+    return axios.post<IBackendRes<IUserLogin>>(url, { restaurant, quantity });
+};
+export const getFavoriteRestaurantAPI = () => {
+    const url = `/api/v1/likes?current=1&pageSize=10`;
+    return axios.get<IBackendRes<IRestaurant[]>>(url);
+};
+
+export const getRestaurantByNameAPI = (name: string) => {
+    const url = `/api/v1/restaurants?current=1&pageSize=10&name=/${name}/i`;
+    return axios.get<IBackendRes<IModelPaginate<IRestaurant>>>(url);
+};
+
+export const filterRestaurantAPI = (query: string) => {
+    const url = `/api/v1/restaurants?${query}`;
+    return axios.get<IBackendRes<IModelPaginate<IRestaurant>>>(url);
+};

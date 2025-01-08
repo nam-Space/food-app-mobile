@@ -68,17 +68,33 @@ const RootLayout = () => {
                                 options={{ headerShown: false }}
                             />
                             <Stack.Screen
+                                name="(auth)/search"
+                                options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
+                                name="(auth)/restaurants"
+                                options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
+                                name="(auth)/popup.sale"
+                                options={{
+                                    headerShown: false,
+                                    animation: "fade",
+                                    presentation: "transparentModal",
+                                }}
+                            />
+                            <Stack.Screen
                                 name="(tabs)"
                                 options={{ headerShown: false }}
                             />
 
                             <Stack.Screen
-                                name="product/[id]"
+                                name="(user)/product/[id]"
                                 options={{ headerShown: false }}
                             // options={{ headerTitle: "Sản phẩm" }}
                             />
                             <Stack.Screen
-                                name="product/create.modal"
+                                name="(user)/product/create.modal"
                                 options={{
                                     headerShown: false,
                                     animation: "fade",
@@ -87,7 +103,7 @@ const RootLayout = () => {
                             // options={{ headerTitle: "Sản phẩm" }}
                             />
                             <Stack.Screen
-                                name="product/update.modal"
+                                name="(user)/product/update.modal"
                                 options={{
                                     headerShown: false,
                                     animation: "fade",
@@ -95,8 +111,24 @@ const RootLayout = () => {
                                 }}
                             />
                             <Stack.Screen
-                                name="product/place.order"
+                                name="(user)/product/place.order"
                                 options={{ headerTitle: "Xác nhận đơn hàng" }}
+                            />
+                            <Stack.Screen
+                                name="(user)/account/info"
+                                options={{ headerTitle: "Cập nhật thông tin" }}
+                            />
+                            <Stack.Screen
+                                name="(user)/account/password"
+                                options={{ headerTitle: "Cập nhật mật khẩu" }}
+                            />
+                            <Stack.Screen
+                                name="(auth)/request.password"
+                                options={{ headerShown: false }}
+                            />
+                            <Stack.Screen
+                                name="(auth)/forgot.password"
+                                options={{ headerShown: false }}
                             />
                         </Stack>
                     </ThemeProvider>
