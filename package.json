@@ -1,5 +1,5 @@
 {
-    "name": "Nam-Nguyen",
+    "name": "namnguyen",
     "version": "1.0.0",
     "main": "expo-router/entry",
     "author": {
@@ -30,7 +30,7 @@
         "expo-splash-screen": "0.27.5",
         "expo-status-bar": "1.12.1",
         "formik": "2.4.6",
-        "Nam-Nguyen": "file:",
+        "namnguyen": "file:",
         "react": "18.2.0",
         "react-content-loader": "7.0.2",
         "react-native": "0.74.3",
