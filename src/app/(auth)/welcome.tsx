@@ -52,7 +52,7 @@ const WelcomePage = () => {
                             Welcome to
                         </Text>
                         <Text style={styles.body}>
-                            @hoidanit - Food
+                            @Nam Trề - Food
                         </Text>
                         <Text style={styles.footer}>
                             Nền tảng giao đồ ăn trực tuyến hàng đầu Việt Nam

@@ -153,7 +153,7 @@ const AccountPage = () => {
                     </Text>
                 </Pressable>
                 <Text style={{ textAlign: "center", color: APP_COLOR.GREY }}>
-                    Version 1.0 - @hoidanit
+                    Version 1.0 - @Nam Trề
                 </Text>
             </View>
         </View >
